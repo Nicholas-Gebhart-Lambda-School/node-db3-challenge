@@ -24,11 +24,19 @@ const add = scheme => {
     .then(id => findById(id[0]));
 };
 
+const update = (changes, id) => {
+  console.log(changes);
+  return db("schemes")
+    .where({ id })
+    .update("scheme_name", changes.scheme_name)
+    .then(() => findById(id));
+};
+
 module.exports = {
   find,
   findById,
   findSteps,
-  add
-  // update,
+  add,
+  update
   // remove
 };
