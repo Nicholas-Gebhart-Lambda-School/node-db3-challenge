@@ -32,11 +32,20 @@ const update = (changes, id) => {
     .then(() => findById(id));
 };
 
+const remove = id => {
+  return db("schemes")
+    .del()
+    .where({ id })
+    .then(bool => {
+      return bool;
+    });
+};
+
 module.exports = {
   find,
   findById,
   findSteps,
   add,
-  update
-  // remove
+  update,
+  remove
 };
